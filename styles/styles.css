@@ -1,0 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+.strokeHeading {
+  -webkit-text-stroke: 1px #d4af37;
+  color: #1a1a1a !important;
+}
