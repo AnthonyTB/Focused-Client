@@ -25,3 +25,7 @@ body::-webkit-scrollbar-thumb {
   background: linear-gradient(#1a1a1a, #d4af37);
   border-radius: 0px 0px 10px 10px;
 }
+
+* {
+  font-family: "Roboto", sans-serif;
+}

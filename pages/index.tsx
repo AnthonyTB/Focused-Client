@@ -1,31 +1,61 @@
 import Head from "next/head";
 import Heading from "../Components/Home/Heading";
 import HomeHero from "../Components/Home/Hero";
+import About from "../Components/Home/About";
+import Services from "../Components/Home/Services";
+
+const mockServices = [
+  {
+    ServiceHeading: "Management",
+    ServiceLogo: "fas fa-users",
+    ServiceContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    ServiceHeading: "Management",
+    ServiceLogo: "fas fa-users",
+    ServiceContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    ServiceHeading: "Management",
+    ServiceLogo: "fas fa-users",
+    ServiceContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    ServiceHeading: "Management",
+    ServiceLogo: "fas fa-users",
+    ServiceContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+];
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>Focused | Home</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeHero />
       <main className="w-full px-20">
-        <section className="clear-both">
+        <section className="clear-both h-96">
           <Heading Text={"ABOUT US"} />
-          <div className="flex flex-col items-center justify-center min-h-screen"></div>
+          <About
+            Text={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          />
         </section>
-        <section className="clear-both">
+        <section className="clear-both h-96">
           <Heading Text={"OUR SERVICES"} />
-          <div className="flex flex-col items-center justify-center min-h-screen"></div>
+          <Services Services={mockServices} />
         </section>
-        <section className="clear-both">
+        <section className="clear-both h-96">
           <Heading Text={"OUR CLIENTS"} />
-          <div className="flex flex-col items-center justify-center min-h-screen"></div>
         </section>
-        <section className="clear-both">
+        <section className="clear-both h-96">
           <Heading Text={"CONTACT US"} />
-          <div className="flex flex-col items-center justify-center min-h-screen"></div>
         </section>
       </main>
     </div>

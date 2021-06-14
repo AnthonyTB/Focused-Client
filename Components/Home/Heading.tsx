@@ -14,13 +14,13 @@ const Heading = ({ Text }: { Text: string }) => {
 
     return (
       <h2
-        className="font-roboto text-accent font-black text-6xl text-right uppercase border-accent border-dotted border-r-4 pr-8 Heading"
+        className=" text-accent font-black text-6xl text-right uppercase border-accent border-dotted border-r-4 pr-8 Heading"
         dangerouslySetInnerHTML={{ __html: result }}
       ></h2>
     );
   };
 
-  return <div className="w-1/5 float-left">{formatText(Text)}</div>;
+  return <div className="w-1/5 inline-block">{formatText(Text)}</div>;
 };
 
 export default Heading;
