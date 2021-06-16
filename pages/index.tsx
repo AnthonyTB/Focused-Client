@@ -36,6 +36,10 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>Focused | Home</title>
+        <script
+          src="https://kit.fontawesome.com/1a7135390e.js"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <HomeHero />
       <main className="w-full px-20">
