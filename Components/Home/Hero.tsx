@@ -2,16 +2,21 @@ import Image from "next/image";
 
 const HomeHero = () => {
   return (
-    <header className="w-1/2 h-screen relative">
-      <h1 className="text-white font-black text-6xl mt-10 mb-2">
-        FOCUSED<span className="text-accent">.</span>
-      </h1>
-      <div className="bg-black w-7/8 h-4/6 z-10 relative" />
-      <div className="absolute bottom-32 -right-20">
+    <header className="w-4/5 xl:w-3/5 h-screen m-auto flex flex-col justify-center relative">
+      <div className="float-left">
+        <Image
+          src="/images/Logo-White-Yellow.svg"
+          height="auto"
+          width="150px"
+          alt="Branding logo"
+        />
+      </div>
+      <div className="bg-black w-full video z-10 relative -mt-16 lg:-mt-10" />
+      <div className="float-right -mt-10 -ml-6">
         <Image
           src="/images/dot.svg"
-          height={200}
-          width={200}
+          height={"100%"}
+          width={"100%"}
           alt="dot pattern"
         />
       </div>

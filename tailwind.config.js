@@ -4,13 +4,17 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      maxWidth: {
+        60: "60%",
+        80: "80%",
+      },
       colors: {
         background: "#1a1a1a",
         altBackground: "#373737",
-        accent: "#D4AF37",
+        accent: "#fff",
       },
       fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
+        roboto: ["Poppins", "sans-serif"],
       },
     },
   },

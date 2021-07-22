@@ -7,4 +7,7 @@ module.exports = {
 
     return config;
   },
+  images: {
+    domains: ["upload.wikimedia.org", "resource.logitechg.com"],
+  },
 };
