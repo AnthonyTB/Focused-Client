@@ -141,7 +141,7 @@ export default function Home() {
         <script
           src="https://kit.fontawesome.com/1a7135390e.js"
           crossOrigin="anonymous"
-        ></script>
+        ></script> 
       </Head>
       <HomeHero />
       <main className="w-full px-5 md:px-10 lg:px-7">
