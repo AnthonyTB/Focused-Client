@@ -5,7 +5,7 @@ const HomeHero = () => {
     <header className="w-4/5 xl:w-3/5 h-screen m-auto flex flex-col justify-center relative">
       <div className="float-left w-1/2 sm:mb-4 md:mb-0 md:w-full">
         <Image
-          src="/images/Logo-White-Yellow.svg"
+          src="/images/Logo-White.svg"
           height="auto"
           width="auto"
           alt="Branding logo"

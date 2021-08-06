@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Heading from "../Components/Home/Heading";
-import HomeHero from "../Components/Home/Hero";
-import About from "../Components/Home/About";
-import Services from "../Components/Home/Services";
-import ImageSlide from "../Components/ImageSlide";
-import { CreatorStats } from "../Components/Home/CreatorStats";
-import ContactForm from "../Components/Home/Contact";
+import Heading from "../components/Home/Heading";
+import HomeHero from "../components/Home/Hero";
+import About from "../components/Home/About";
+import Services from "../components/Home/Services";
+import ImageSlide from "../components/ImageSlide";
+import { CreatorStats } from "../components/Home/CreatorStats";
+import ContactForm from "../components/Home/Contact";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 

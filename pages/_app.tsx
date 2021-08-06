@@ -2,6 +2,7 @@ import "tailwindcss/tailwind.css";
 import "../styles/styles.css";
 import Head from "next/head";
 import React from "react";
+import TransitionLayout from "../components/Transition";
 
 function MyApp({
   Component,
@@ -16,7 +17,9 @@ function MyApp({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-background">
-        <Component {...pageProps} />
+        <TransitionLayout>
+          <Component {...pageProps} />
+        </TransitionLayout>
       </div>
     </>
   );

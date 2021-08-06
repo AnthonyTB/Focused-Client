@@ -1,4 +1,8 @@
 import { useForm, Controller } from "react-hook-form";
+import emailjs from 'emailjs-com';
+import { useState } from 'react';
+import Success from '../Success';
+
 
 interface IProps {
   Email: string;
@@ -38,13 +42,25 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
   const {
     register,
     watch,
-    handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm<ContactFormValues>({ defaultValues: formDefaults });
 
-  const onSubmit = (formData: ContactFormValues) => {
+  const [status, setStatus] = useState<'success' | 'error' | null>(null)
+
+  const onSubmit = (formData: any) => {
     console.log(formData);
+    formData.preventDefault()
+
+    try {
+    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string, 'template_xb7zzjz', formData.target, process.env.NEXT_PUBLIC_EMAIL_USER_ID as string)
+    setStatus('success');
+    reset(formDefaults);
+    setTimeout(() => setStatus(null), 3000);
+    } catch (err) {
+      console.log('error', err)
+    }
   };
 
   const generalInputs = [
@@ -105,7 +121,7 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
         </div>
       </div>
       <div className="flex-auto">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        {status === null ? <form onSubmit={onSubmit}>
           {generalInputs.map(({ name, placeholder, type }) => (
             <>
               <input
@@ -184,6 +200,9 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
             </button>
           </div>
         </form>
+        : 
+          <Success /> 
+        }
       </div>
     </div>
   );
