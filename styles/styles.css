@@ -57,13 +57,13 @@ body {
   .Companies img {
     filter: grayscale(1);
     opacity: 40%;
-    transition: all 1s;
+    transition: all .5s;
   }
 
   .Companies img:hover {
     filter: grayscale(0) !important;
     opacity: 100%;
-    transition: all 1s;
+    transition: all .5s;
   }
 }
 

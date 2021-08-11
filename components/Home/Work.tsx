@@ -13,7 +13,7 @@ interface ICompany {
 const Work: React.FC<IProps> = ({ Companies }) => {
   return (
     <>
-      <h1 className="text-4xl  text-accent font-black uppercase text-center mb-4">
+      <h1 className="text-4xl hidden text-accent font-black uppercase text-center mb-4">
         Companies we've worked with
       </h1>
       <ul className="flex flex-row flex-wrap Companies sm:ml-16 lg:ml-0 justify-center">
