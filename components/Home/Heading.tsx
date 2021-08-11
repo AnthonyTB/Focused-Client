@@ -6,7 +6,7 @@ const Heading = ({ Text }: { Text: string }) => {
       if (idx === 0) {
         result =
           result +
-          `<span style="color: #1a1a1a; -webkit-text-stroke: 1px #000;">${word}</span>`;
+          `<span style="color: #1a1a1a; -webkit-text-stroke: 1px #373737;">${word}</span>`;
       } else {
         result = result + ` ${word}`;
       }

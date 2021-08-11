@@ -8,6 +8,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ["upload.wikimedia.org", "resource.logitechg.com"],
+    domains: ["upload.wikimedia.org", "resource.logitechg.com", "i.imgur.com"],
   },
 };

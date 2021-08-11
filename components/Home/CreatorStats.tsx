@@ -76,6 +76,13 @@ const CreatorStats: React.FC<ICSProps> = () => {
   return (
     <ul className="mb-4">
       <li className="inline-block mx-2">
+        <i className="fab fa-instagram text-accent inline-block text-xl mr-2" />
+        <p className="font-black text-2xl inline-block text-white">
+          <IncrementStats Value={100000} />
+        </p>
+        <p className="font-black text-accent text-xs text-center">FOLLOWERS</p>
+      </li>
+      <li className="inline-block mx-2">
         <i className="fab fa-twitter text-accent inline-block text-xl mr-2" />
         <p className="font-black text-2xl inline-block text-white">
           <IncrementStats Value={100000} />

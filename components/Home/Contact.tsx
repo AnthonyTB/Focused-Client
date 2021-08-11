@@ -1,8 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
-import emailjs from 'emailjs-com';
-import { useState } from 'react';
-import Success from '../Success';
-
+import emailjs from "emailjs-com";
+import { useState } from "react";
+import Success from "../Success";
 
 interface IProps {
   Email: string;
@@ -47,27 +46,31 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
     formState: { errors },
   } = useForm<ContactFormValues>({ defaultValues: formDefaults });
 
-  const [status, setStatus] = useState<'success' | 'error' | null>(null)
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
 
   const onSubmit = (formData: any) => {
     console.log(formData);
-    formData.preventDefault()
+    formData.preventDefault();
 
     try {
-    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string, 'template_xb7zzjz', formData.target, process.env.NEXT_PUBLIC_EMAIL_USER_ID as string)
-    setStatus('success');
-    reset(formDefaults);
-    setTimeout(() => setStatus(null), 3000);
+      emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
+        "template_xb7zzjz",
+        formData.target,
+        process.env.NEXT_PUBLIC_EMAIL_USER_ID as string
+      );
+      setStatus("success");
+      reset(formDefaults);
+      setTimeout(() => setStatus(null), 3000);
     } catch (err) {
-      console.log('error', err)
+      console.log("error", err);
     }
   };
 
   const generalInputs = [
-    { name: "firstName", placeholder: "First Name", type: "text" },
-    { name: "lastName", placeholder: "Last Name", type: "text" },
-    { name: "email", placeholder: "Email", type: "email" },
-    { name: "phoneNumber", placeholder: "Phone Number", type: "tel" },
+    { name: "fullName", placeholder: "Full Name", type: "text" },
+    { name: "email", placeholder: "Email", type: "text" },
+    { name: "alias", placeholder: "Alias", type: "text" },
   ];
 
   const renderCreatorQuestions = () => {
@@ -84,14 +87,14 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
         {...register(name)}
         placeholder={placeholder}
         type="url"
-        className="bg-transparent border-b-2 border-background m-4 placeholder-background focus:border-accent duration-500"
+        className="bg-transparent md:text-2xl border-b-2 border-altBackground m-4 placeholder-altBackground focus:border-accent duration-500"
       />
     ));
   };
 
   return (
-    <div className="w-full lg:w-3/4 xl:w-3/5 lg:flex-row flex flex-col bg-altBackground rounded-xl p-4">
-      <div className="flex-auto bg-background rounded-xl lg:mr-10 p-4">
+    <div className="w-full lg:w-3/4 lg:flex-row flex flex-col rounded-xl">
+      {/* <div className="flex-auto bg-background rounded-xl lg:mr-10 p-4">
         <div className="mb-4">
           <h3 className="uppercase font-bold text-accent text-lg lg:text-2xl">
             contact information
@@ -119,90 +122,65 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="flex-auto">
-        {status === null ? <form onSubmit={onSubmit}>
-          {generalInputs.map(({ name, placeholder, type }) => (
-            <>
-              <input
-                //@ts-ignore
-                {...register(name, { required: name !== "phoneNumber" })}
-                placeholder={placeholder}
-                type={type}
-                className="bg-transparent border-b-2 border-background m-4 text-white placeholder-background focus:border-accent duration-500"
-              />
-              {/* @ts-ignore */}
-              {errors[name] && <h3>Required</h3>}
-            </>
-          ))}
-          <h3 className="ml-4 font-bold text-accent mt-4">
-            WHAT ARE YOU MESSAGING ABOUT?
-          </h3>
-          <div>
-            <Controller
-              control={control}
-              name="contactType"
-              render={({ field: { onChange } }) => (
-                <fieldset
-                  id="contactType"
-                  onChange={(e: any) => onChange(e.target.value)}
-                >
-                  <input
-                    {...register("contactType", { required: true })}
-                    type="radio"
-                    name="contactType"
-                    value="creator"
-                    className="ml-4"
-                  />
-                  <label
-                    className="font-bold align-middle ml-2 text-xs text-white"
-                    htmlFor="creator"
-                  >
-                    BECOMING A CREATOR
-                  </label>
-                  <br className="sm:hidden" />
-                  <input
-                    className="ml-4 md:ml-6"
-                    type="radio"
-                    name="contactType"
-                    value="venture"
-                  />
-                  <label
-                    className="font-bold align-middle ml-2 text-xs text-white"
-                    htmlFor="venture"
-                  >
-                    BECOMING A VENTURER
-                  </label>
-                </fieldset>
-              )}
-            />
-          </div>
-          {watch().contactType === "creator" ? renderCreatorQuestions() : null}
-          <label
-            className="block ml-4 font-bold text-accent mt-4"
-            htmlFor="message"
-          >
-            MESSAGE
-          </label>
-          <div className="w-10/12">
-            <textarea
-              {...register("message", { required: true })}
-              placeholder="Write your message..."
-              maxLength={150}
-              className="ml-4 w-full rounded-2xl p-2"
-            />
-            {errors.message && <h3>{errors.message}</h3>}
-            <button
-              className="block float-right border-background text-background font-bold mt-4 border-2 px-6 py-1 rounded-full hover:border-accent hover:text-accent duration-500"
-              type="submit"
+        {status === null ? (
+          <form onSubmit={onSubmit}>
+            {generalInputs.map(({ name, placeholder, type }) => (
+              <>
+                <input
+                  //@ts-ignore
+                  {...register(name, { required: true })}
+                  placeholder={placeholder}
+                  type={type}
+                  className="bg-transparent border-b-2 md:text-2xl border-altBackground m-4 text-white placeholder-altBackground focus:border-accent duration-500"
+                />
+                {/* @ts-ignore */}
+                {errors[name] && <h3>Required</h3>}
+              </>
+            ))}
+            <br />
+            <h3 className="ml-4 font-bold text-accent mt-4 inline-block md:text-2xl">
+              I AM A:
+            </h3>
+            <div className="inline-block align-middle">
+              <select
+                className="bg-transparent -mt-2 ml-4 font-black text-accent md:text-2xl"
+                {...register("contactType", { required: true })}
+              >
+                <option value="creator">CREATOR</option>
+                <option value="brand">BRAND</option>
+              </select>
+            </div>
+            <br />
+            {watch().contactType === "creator"
+              ? renderCreatorQuestions()
+              : null}
+            <label
+              className="block ml-4 font-bold text-accent mt-4 md:text-2xl"
+              htmlFor="message"
             >
-              SEND
-            </button>
-          </div>
-        </form>
-        : 
-          <Success /> 
-        }
+              MESSAGE
+            </label>
+            <div className="w-10/12">
+              <textarea
+                {...register("message", { required: true })}
+                placeholder="Write your message..."
+                maxLength={150}
+                className="ml-4 w-full rounded-2xl p-2 md:text-2xl"
+              />
+              {errors.message && <h3>{errors.message}</h3>}
+              <button
+                className="block md:text-2xl float-right border-altBackground text-altBackground font-bold mt-4 border-2 px-6 py-1 rounded-full hover:border-accent hover:text-accent duration-500"
+                type="submit"
+              >
+                SEND
+              </button>
+            </div>
+          </form>
+        ) : (
+          <Success />
+        )}
       </div>
     </div>
   );

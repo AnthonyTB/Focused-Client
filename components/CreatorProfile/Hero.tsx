@@ -54,7 +54,7 @@ const CreatorHero: React.FC<IProps> = ({ ImageUrl, SocialMedias, Name }) => {
           ))}
         </ul>
       </div>
-      <div className="absolute top-10 left-4 lg:left-10 uppercase text-white text-6xl font-black">
+      <div className="absolute top-10 left-4 lg:left-10 uppercase text-white text-4xl md:text-6xl font-black">
         <h1>{Name}</h1>
       </div>
     </header>

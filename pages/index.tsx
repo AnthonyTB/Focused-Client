@@ -8,6 +8,7 @@ import { CreatorStats } from "../components/Home/CreatorStats";
 import ContactForm from "../components/Home/Contact";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
+import Work from "../components/Home/Work";
 
 const mockServices = [
   {
@@ -111,6 +112,64 @@ const mockSlides = [
   },
 ];
 
+const mockCompanies = [
+  {
+    Brand: "https://i.imgur.com/Ya8eXAI.png",
+    URL: "https://gfuel.com/",
+    Name: "GFUEL",
+  },
+  {
+    Brand: "https://i.imgur.com/zO9y6Nd.png",
+    URL: "https://www.bgca.org/",
+    Name: "Boys&Girls",
+  },
+  {
+    Brand: "https://i.imgur.com/2dXpFZc.png",
+    URL: "https://www.dell.com/en-us/gaming/alienware",
+    Name: "Dell",
+  },
+  {
+    Brand: "https://i.imgur.com/ee92bLN.png",
+    URL: "https://battlebeavercustoms.com/",
+    Name: "BattleBeaver",
+  },
+  {
+    Brand: "https://i.imgur.com/TtDoNwU.png",
+    URL: "https://dreamhack.com/",
+    Name: "Dreamhack",
+  },
+  {
+    Brand: "https://i.imgur.com/fsIuJdt.png",
+    URL: "https://www.elgato.com/en",
+    Name: "Elgato",
+  },
+  {
+    Brand: "https://i.imgur.com/EgPZCEc.png",
+    URL: "https://www.hyperxgaming.com/unitedstates/us",
+    Name: "HyperX",
+  },
+  {
+    Brand: "https://i.imgur.com/feQNo6G.png",
+    URL: "https://liquiddeath.com/",
+    Name: "LiquidDeath",
+  },
+  {
+    Brand: "https://i.imgur.com/Q5FUP3s.png",
+    URL: "https://www.manscaped.com/",
+    Name: "Manscaped",
+  },
+  {
+    Brand: "https://i.imgur.com/qytatOO.png",
+    URL: "https://www.pitviper.com/",
+    Name: "PitViper",
+  },
+  {
+    Brand: "https://i.imgur.com/rrm7Qrx.png",
+    URL: "https://respawnproducts.com/",
+    Name: "RespawnProducts",
+  },
+];
+
 const mockContactForm = {
   Email: "sdfsdfsdf@gmail.com",
   Address: "Seattle, WA",
@@ -141,7 +200,7 @@ export default function Home() {
         <script
           src="https://kit.fontawesome.com/1a7135390e.js"
           crossOrigin="anonymous"
-        ></script> 
+        ></script>
       </Head>
       <HomeHero />
       <main className="w-full px-5 md:px-10 lg:px-7">
@@ -153,12 +212,12 @@ export default function Home() {
             }
           />
         </section>
-        <section className="clear-both mb-24">
+        {/* <section className="clear-both mb-24">
           <Heading Text={"OUR SERVICES"} />
           <Services Services={mockServices} />
-        </section>
+        </section> */}
         <section className="clear-both mb-32">
-          <Heading Text={"OUR CLIENTS"} />
+          <Heading Text={"THE CREATORS"} />
           <div className="lg:w-5/6 lg:ml-20">
             <div className="float-right">
               <CreatorStats />
@@ -166,6 +225,12 @@ export default function Home() {
             <div className="lg:max-w-80 clear-both lg:float-right lg:mb-36">
               <ImageSlide Slides={mockSlides} />
             </div>
+          </div>
+        </section>
+        <section className="clear-both mb-32">
+          <Heading Text={"OUR WORK"} />
+          <div className="md:w-11/12">
+            <Work Companies={mockCompanies} />
           </div>
         </section>
         <section className="clear-both mb-32">

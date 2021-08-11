@@ -53,6 +53,20 @@ body {
   border-radius: 10px;
 }
 
+@media (min-width: 1200px) {
+  .Companies img {
+    filter: grayscale(1);
+    opacity: 40%;
+    transition: all 1s;
+  }
+
+  .Companies img:hover {
+    filter: grayscale(0) !important;
+    opacity: 100%;
+    transition: all 1s;
+  }
+}
+
 * {
   font-family: "Poppins", sans-serif;
 }
