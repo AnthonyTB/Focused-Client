@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import emailjs from "emailjs-com";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Success from "../Success";
 
 interface IProps {
@@ -20,7 +20,7 @@ type ContactFormValues = {
   lastName: string;
   email: string;
   phoneNumber: string;
-  contactType: "creator" | "venture";
+  contactType: "creator" | "brand";
   message: string;
   twitch?: string;
   youtube?: string;
@@ -47,9 +47,30 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
   } = useForm<ContactFormValues>({ defaultValues: formDefaults });
 
   const [status, setStatus] = useState<"success" | "error" | null>(null);
+  const [generalInputs, setGeneralInputs] = useState([
+    { name: "fullName", placeholder: "Full Name", type: "text" },
+    { name: "email", placeholder: "Email", type: "text" },
+    { name: "gamertag", placeholder: "Gamertag", type: "text" },
+  ]);
+
+  useEffect(() => {
+    if (watch().contactType === "creator") {
+      setGeneralInputs([
+        { name: "fullName", placeholder: "Full Name", type: "text" },
+        { name: "email", placeholder: "Email", type: "text" },
+        { name: "gamertag", placeholder: "Gamertag", type: "text" },
+      ]);
+    }
+
+    if (watch().contactType === "brand") {
+      setGeneralInputs([
+        { name: "fullName", placeholder: "Full Name", type: "text" },
+        { name: "email", placeholder: "Email", type: "text" },
+      ]);
+    }
+  }, [watch().contactType]);
 
   const onSubmit = (formData: any) => {
-    console.log(formData);
     formData.preventDefault();
 
     try {
@@ -66,12 +87,6 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
       console.log("error", err);
     }
   };
-
-  const generalInputs = [
-    { name: "fullName", placeholder: "Full Name", type: "text" },
-    { name: "email", placeholder: "Email", type: "text" },
-    { name: "alias", placeholder: "Alias", type: "text" },
-  ];
 
   const renderCreatorQuestions = () => {
     const creatorInputs = [
@@ -126,6 +141,26 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
       <div className="flex-auto">
         {status === null ? (
           <form onSubmit={onSubmit}>
+            <h3 className="ml-4 font-bold text-accent mt-4 inline-block md:text-2xl">
+              I AM A:
+            </h3>
+            <div className="inline-block align-middle">
+              <select
+                className="bg-transparent -mt-2 ml-4 font-black text-accent md:text-2xl"
+                {...register("contactType", { required: true })}
+              >
+                <option
+                  className="text-altBackground font-black"
+                  value="creator"
+                >
+                  CREATOR
+                </option>
+                <option className="text-altBackground font-black" value="brand">
+                  BRAND
+                </option>
+              </select>
+            </div>
+            <br />
             {generalInputs.map(({ name, placeholder, type }) => (
               <>
                 <input
@@ -139,20 +174,7 @@ const ContactForm: React.FC<IProps> = ({ Email, Address, SocialMedias }) => {
                 {errors[name] && <h3>Required</h3>}
               </>
             ))}
-            <br />
-            <h3 className="ml-4 font-bold text-accent mt-4 inline-block md:text-2xl">
-              I AM A:
-            </h3>
-            <div className="inline-block align-middle">
-              <select
-                className="bg-transparent -mt-2 ml-4 font-black text-accent md:text-2xl"
-                {...register("contactType", { required: true })}
-              >
-                <option value="creator">CREATOR</option>
-                <option value="brand">BRAND</option>
-              </select>
-            </div>
-            <br />
+
             {watch().contactType === "creator"
               ? renderCreatorQuestions()
               : null}

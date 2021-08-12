@@ -19,7 +19,7 @@ const Work: React.FC<IProps> = ({ Companies }) => {
       <ul className="flex flex-row flex-wrap Companies sm:ml-16 lg:ml-0 justify-center">
         {Companies.map(({ Brand, Name, URL }: ICompany) => (
           <li key={Name} className="m-auto mx-4 w-2/5 sm:w-1/4 lg:w-2/12">
-            <a href={URL}>
+            <a href={URL} target='blank_'>
               <Image
                 width="auto"
                 height="auto"

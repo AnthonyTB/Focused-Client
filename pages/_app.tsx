@@ -3,6 +3,7 @@ import "../styles/styles.css";
 import Head from "next/head";
 import React from "react";
 import TransitionLayout from "../components/Transition";
+import "animate.css/animate.min.css";
 
 function MyApp({
   Component,
@@ -18,7 +19,7 @@ function MyApp({
         <script
           src="https://kit.fontawesome.com/1a7135390e.js"
           crossOrigin="anonymous"
-        ></script> 
+        ></script>
       </Head>
       <div className="bg-background">
         <TransitionLayout>
