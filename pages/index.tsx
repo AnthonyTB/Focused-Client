@@ -7,35 +7,34 @@ import ImageSlide from "../components/ImageSlide";
 import { CreatorStats } from "../components/Home/CreatorStats";
 import ContactForm from "../components/Home/Contact";
 import ScrollAnimation from "react-animate-on-scroll";
-import "animate.css/animate.min.css";
 import Work from "../components/Home/Work";
 
-const mockServices = [
-  {
-    ServiceHeading: "Management",
-    ServiceLogo: "fas fa-users",
-    ServiceContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    ServiceHeading: "Management",
-    ServiceLogo: "fas fa-users",
-    ServiceContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    ServiceHeading: "Management",
-    ServiceLogo: "fas fa-users",
-    ServiceContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    ServiceHeading: "Management",
-    ServiceLogo: "fas fa-users",
-    ServiceContent:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-];
+// const mockServices = [
+//   {
+//     ServiceHeading: "Management",
+//     ServiceLogo: "fas fa-users",
+//     ServiceContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     ServiceHeading: "Management",
+//     ServiceLogo: "fas fa-users",
+//     ServiceContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     ServiceHeading: "Management",
+//     ServiceLogo: "fas fa-users",
+//     ServiceContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     ServiceHeading: "Management",
+//     ServiceLogo: "fas fa-users",
+//     ServiceContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+// ];
 
 const mockSlides = [
   {
@@ -206,20 +205,35 @@ export default function Home() {
           src="https://kit.fontawesome.com/1a7135390e.js"
           crossOrigin="anonymous"
         ></script>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        ></link>
       </Head>
-      <ScrollAnimation animateIn="fadeIn" duration={5} className="w-full">
+      <ScrollAnimation
+        animateOnce={true}
+        animateIn="fadeIn"
+        duration={3}
+        className="w-full"
+      >
         <HomeHero />
       </ScrollAnimation>
       <main className="w-full px-5 md:px-10 lg:px-7">
         <section className="clear-both mb-24">
           <ScrollAnimation
+            animateOnce={true}
             animateIn="slideInLeft"
-            duration={5}
+            duration={1}
             className="w-full"
           >
             <Heading Text={"ABOUT US"} />
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" duration={5} className="w-full">
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
             <About
               Text={
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -233,23 +247,30 @@ export default function Home() {
         </section> */}
         <section className="clear-both mb-32">
           <ScrollAnimation
+            animateOnce={true}
             animateIn="slideInLeft"
-            duration={5}
+            duration={1}
             className="w-full"
           >
             <Heading Text={"THE CREATORS"} />
           </ScrollAnimation>
           <div className="lg:w-5/6 lg:ml-20">
             <ScrollAnimation
+              animateOnce={true}
               animateIn="slideInRight"
-              duration={5}
+              duration={1}
               className="w-full"
             >
               <div className="float-right">
                 <CreatorStats />
               </div>
             </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" duration={5} className="w-full">
+            <ScrollAnimation
+              animateOnce={true}
+              animateIn="fadeIn"
+              duration={3}
+              className="w-full"
+            >
               <div className="lg:max-w-80 clear-both lg:float-right lg:mb-36">
                 <ImageSlide Slides={mockSlides} />
               </div>
@@ -258,13 +279,19 @@ export default function Home() {
         </section>
         <section className="clear-both mb-32">
           <ScrollAnimation
+            animateOnce={true}
             animateIn="slideInLeft"
-            duration={5}
+            duration={3}
             className="w-full"
           >
             <Heading Text={"OUR WORK"} />
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" duration={5} className="w-full">
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
             <div className="md:w-11/12">
               <Work Companies={mockCompanies} />
             </div>
@@ -272,13 +299,19 @@ export default function Home() {
         </section>
         <section className="clear-both mb-32">
           <ScrollAnimation
+            animateOnce={true}
             animateIn="slideInLeft"
-            duration={5}
+            duration={3}
             className="w-full"
           >
             <Heading Text={"CONTACT US"} />
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" duration={5} className="w-full">
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
             <ContactForm {...mockContactForm} />
           </ScrollAnimation>
         </section>

@@ -8,49 +8,72 @@ import ImageSlide from "../../components/ImageSlide";
 import Navigation from "../../components/Navigation";
 import Post from "../../components/CreatorProfile/Post";
 import InfoModal from "../../components/Modal";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const CreatorProfile: React.FC = () => {
   const router = useRouter();
   const { name } = router.query;
-  const modalNode = <div id='#modal'></div>;
+  const modalNode = <div id="#modal"></div>;
 
   const mockSponsorSlides = [
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () => ReactDOM.createPortal(<InfoModal Heading={'Hi'} Content={'Hi'} isOpen={true} />, modalNode as any),
+      ImageCallback: () =>
+        ReactDOM.createPortal(
+          <InfoModal Heading={"Hi"} Content={"Hi"} isOpen={true} />,
+          modalNode as any
+        ),
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () => ReactDOM.createPortal(<InfoModal Heading={'Hi 2'} Content={'Hi'} isOpen={true} />, modalNode as any),
+      ImageCallback: () =>
+        ReactDOM.createPortal(
+          <InfoModal Heading={"Hi 2"} Content={"Hi"} isOpen={true} />,
+          modalNode as any
+        ),
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () => ReactDOM.createPortal(<InfoModal Heading={'Hi 3'} Content={'Hi'} isOpen={true} />, modalNode as any),
+      ImageCallback: () =>
+        ReactDOM.createPortal(
+          <InfoModal Heading={"Hi 3"} Content={"Hi"} isOpen={true} />,
+          modalNode as any
+        ),
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () => ReactDOM.createPortal(<InfoModal Heading={'Hi 4'} Content={'Hi'} isOpen={true} />, modalNode as any),
+      ImageCallback: () =>
+        ReactDOM.createPortal(
+          <InfoModal Heading={"Hi 4"} Content={"Hi"} isOpen={true} />,
+          modalNode as any
+        ),
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () => ReactDOM.createPortal(<InfoModal Heading={'Hi 5'} Content={'Hi'} isOpen={true} />, modalNode as any),
+      ImageCallback: () =>
+        ReactDOM.createPortal(
+          <InfoModal Heading={"Hi 5"} Content={"Hi"} isOpen={true} />,
+          modalNode as any
+        ),
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () => ReactDOM.createPortal(<InfoModal Heading={'Hi 6'} Content={'Hi'} isOpen={true} />, <div id="#modal" /> as any),
+      ImageCallback: () =>
+        ReactDOM.createPortal(
+          <InfoModal Heading={"Hi 6"} Content={"Hi"} isOpen={true} />,
+          (<div id="#modal" />) as any
+        ),
     },
   ];
 
-  const mockPosts = [
-    { type: "twitter", user: "anthony_bostic" },
-  ];
+  const mockPosts = [{ type: "twitter", user: "anthony_bostic" }];
 
   const mockSocialMedia = [
     {
@@ -81,6 +104,10 @@ const CreatorProfile: React.FC = () => {
           src="https://kit.fontawesome.com/1a7135390e.js"
           crossOrigin="anonymous"
         ></script>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        ></link>
       </Head>
       <Navigation />
       <main className="w-3/4 m-auto">
@@ -95,32 +122,60 @@ const CreatorProfile: React.FC = () => {
           />
         </div>
         <section className="md:w-3/4 mt-20 mb-48 m-auto">
-          <About
-            Content={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
-          />
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
+            <About
+              Content={
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              }
+            />
+          </ScrollAnimation>
         </section>
         <section className="md:w-3/4 mb-48 m-auto relative">
-          <Heading Heading={"Partnerships"} />
-          <div className="min-w-full">
-            <ImageSlide Slides={mockSponsorSlides} />
-          </div>
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
+            <Heading Heading={"Partnerships"} />
+            <div className="min-w-full">
+              <ImageSlide Slides={mockSponsorSlides} />
+            </div>
+          </ScrollAnimation>
         </section>
         <section className="md:w-3/4 mb-48 m-auto relative">
-          <Heading Heading={"Recent Posts"} />
-          <div className="flex flex-col md:flex-row">
-            {mockPosts.map(({ type, user }: any) => (
-              <Post postType={type} postUser={user} />
-            ))}
-          </div>
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
+            <Heading Heading={"Recent Posts"} />
+            <div className="flex flex-col md:flex-row">
+              {mockPosts.map(({ type, user }: any) => (
+                <Post postType={type} postUser={user} />
+              ))}
+            </div>
+          </ScrollAnimation>
         </section>
         <section className="md:w-3/4 m-auto relative">
-          <Heading Heading={"Get Into Contact"} />
-          <Contact
-            CreatorName={name as string}
-            CreatorEmail={"shroud@gmail.com"}
-          />
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
+            <Heading Heading={"Get Into Contact"} />
+            <Contact
+              CreatorName={name as string}
+              CreatorEmail={"shroud@gmail.com"}
+            />
+          </ScrollAnimation>
         </section>
       </main>
     </div>
