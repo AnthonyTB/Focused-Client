@@ -81,18 +81,21 @@ const CreatorProfile: React.FC = () => {
       ProviderDesc: "Followers",
       ProviderBranding: "fab fa-twitter",
       User: "shroud",
+      Link: "https://twitter.com/shroud",
     },
     {
       Provider: "Twitch",
       ProviderDesc: "Followers",
       ProviderBranding: "fab fa-twitch",
       User: "shroud",
+      Link: "https://twitch.com/shroud",
     },
     {
       Provider: "Instagram",
       ProviderDesc: "Followers",
       ProviderBranding: "fab fa-instagram",
       User: "shroud",
+      Link: "https://instagram.com/shroud",
     },
   ];
 
@@ -112,7 +115,7 @@ const CreatorProfile: React.FC = () => {
       <Navigation />
       <main className="w-3/4 m-auto">
         {modalNode}
-        <div className="w-1/4 m-auto min-h-screen">
+        <div className="w-1/4 m-auto min-h-screen overflow-x-hidden">
           <Hero
             Name={name as string}
             ImageUrl={

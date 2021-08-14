@@ -8,11 +8,12 @@ interface IProps {
   Name: string;
 }
 
-interface ISocialMedia {
-  Provider: string;
-  ProviderDesc: string;
-  ProviderBranding: string;
-  User: string;
+export interface ISocialMedia {
+  Provider?: string;
+  ProviderDesc?: string;
+  ProviderBranding?: string;
+  User?: string;
+  Link?: string;
 }
 
 const SocialMediaData: React.FC<ISocialMedia> = ({
@@ -20,18 +21,21 @@ const SocialMediaData: React.FC<ISocialMedia> = ({
   ProviderBranding,
   ProviderDesc,
   User,
+  Link,
 }) => {
   return (
     <li className="mb-8 relative">
-      <i
-        className={`${ProviderBranding} text-black text-4xl md:text-6xl absolute top-0 -left-10 z-0`}
-      />
-      <p className="uppercase text-white text-xs font-black text-right relative z-10">
-        {ProviderDesc}
-      </p>
-      <p className="text-white text-3xl md:text-6xl font-black relative z-10">
-        <IncrementStats Value={20000} />
-      </p>
+      <a href={Link} target="blank_">
+        <i
+          className={`${ProviderBranding} opacity-40 text-black text-4xl md:text-6xl absolute top-0 -left-10 z-0`}
+        />
+        <p className="uppercase text-white text-xs font-black text-right relative z-10">
+          {ProviderDesc}
+        </p>
+        <p className="text-white text-3xl md:text-6xl font-black relative z-10">
+          <IncrementStats Value={20000} />
+        </p>
+      </a>
     </li>
   );
 };

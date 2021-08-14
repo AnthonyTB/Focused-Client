@@ -1,44 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 interface IIncrementProps {
   Value: number;
 }
 
 const IncrementStats: React.FC<IIncrementProps> = ({ Value }) => {
-  const [renderedVal, setRenderedVal] = useState<number>(0);
-
-  useEffect(() => {
-    if (renderedVal === 0) {
-      incrementVals(0, Value);
-    }
-  }, [Value]);
-
-  const incrementVals = useCallback(
-    (sourceVal: number, maxVal: number): any => {
-      const interval = setInterval(() => {
-        if (maxVal > 999999 && sourceVal < maxVal) {
-          sourceVal += 631;
-          setRenderedVal(sourceVal);
-        } else if (maxVal > 99999 && sourceVal < maxVal) {
-          sourceVal += 81;
-          setRenderedVal(sourceVal);
-        } else if (maxVal > 50000 && sourceVal < maxVal) {
-          sourceVal += 41;
-          setRenderedVal(sourceVal);
-        } else if (maxVal > 9999 && sourceVal < maxVal) {
-          sourceVal += 13;
-          setRenderedVal(sourceVal);
-        } else if (sourceVal < maxVal) {
-          sourceVal += 3;
-          setRenderedVal(sourceVal);
-        } else {
-          clearInterval(interval);
-          return sourceVal;
-        }
-      }, 1);
-    },
-    []
-  );
+  const [renderedVal, setRenderedVal] = useState<number>(Value);
 
   const insert = (arr: any, index: number, newItem: any) => [
     ...arr.slice(0, index),

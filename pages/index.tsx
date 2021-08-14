@@ -219,7 +219,7 @@ export default function Home() {
         <HomeHero />
       </ScrollAnimation>
       <main className="w-full px-5 md:px-10 lg:px-7">
-        <section className="clear-both mb-24">
+        <section className="clear-both mb-24 overflow-x-hidden">
           <ScrollAnimation
             animateOnce={true}
             animateIn="slideInLeft"
@@ -245,7 +245,7 @@ export default function Home() {
           <Heading Text={"OUR SERVICES"} />
           <Services Services={mockServices} />
         </section> */}
-        <section className="clear-both mb-32">
+        <section className="clear-both mb-32 overflow-x-hidden">
           <ScrollAnimation
             animateOnce={true}
             animateIn="slideInLeft"
@@ -277,7 +277,7 @@ export default function Home() {
             </ScrollAnimation>
           </div>
         </section>
-        <section className="clear-both mb-32">
+        <section className="clear-both mb-32 overflow-x-hidden">
           <ScrollAnimation
             animateOnce={true}
             animateIn="slideInLeft"
@@ -286,18 +286,11 @@ export default function Home() {
           >
             <Heading Text={"OUR WORK"} />
           </ScrollAnimation>
-          <ScrollAnimation
-            animateOnce={true}
-            animateIn="fadeIn"
-            duration={3}
-            className="w-full"
-          >
-            <div className="md:w-11/12">
-              <Work Companies={mockCompanies} />
-            </div>
+          <ScrollAnimation animateOnce={true} animateIn="fadeIn" duration={3}>
+            <Work Companies={mockCompanies} />
           </ScrollAnimation>
         </section>
-        <section className="clear-both mb-32">
+        <section className="clear-both mb-32 overflow-x-hidden">
           <ScrollAnimation
             animateOnce={true}
             animateIn="slideInLeft"

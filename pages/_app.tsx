@@ -3,6 +3,7 @@ import "../styles/styles.css";
 import Head from "next/head";
 import React from "react";
 import TransitionLayout from "../components/Transition";
+import Footer from "../components/Footer";
 
 function MyApp({
   Component,
@@ -11,6 +12,21 @@ function MyApp({
   Component: React.FC;
   pageProps: any;
 }) {
+  const mockSocialMedias = [
+    {
+      ProviderBranding: "fab fa-twitter",
+      Link: "https://twitter.com/shroud",
+    },
+    {
+      ProviderBranding: "fab fa-instagram",
+      Link: "https://instagram.com/shroud",
+    },
+    {
+      ProviderBranding: "fas fa-envelope",
+      Link: "mailto:anthonytb97@gmail.com",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -28,6 +44,7 @@ function MyApp({
         <TransitionLayout>
           <Component {...pageProps} />
         </TransitionLayout>
+        <Footer SocialMedias={mockSocialMedias} />
       </div>
     </>
   );

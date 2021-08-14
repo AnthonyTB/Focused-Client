@@ -16,7 +16,9 @@
 }
 
 .video {
-  aspect-ratio: 16 / 9;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
 }
 
 body {
@@ -57,13 +59,13 @@ body {
   .Companies img {
     filter: grayscale(1);
     opacity: 40%;
-    transition: all .5s;
+    transition: all 0.5s;
   }
 
   .Companies img:hover {
     filter: grayscale(0) !important;
     opacity: 100%;
-    transition: all .5s;
+    transition: all 0.5s;
   }
 }
 

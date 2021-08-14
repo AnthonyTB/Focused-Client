@@ -39,8 +39,6 @@ const Post: React.FC<IProps> = ({ postType, postUser }) => {
     }
   };
 
-  console.log("token", process.env.NEXT_PUBLIC_INSTAGRAM_TOKEN);
-
   return <div className="Feed mr-10">{renderPost()}</div>;
 };
 
