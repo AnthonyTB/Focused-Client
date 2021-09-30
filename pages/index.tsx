@@ -8,6 +8,7 @@ import { CreatorStats } from "../components/Home/CreatorStats";
 import ContactForm from "../components/Home/Contact";
 import ScrollAnimation from "react-animate-on-scroll";
 import Work from "../components/Home/Work";
+import Masonary from "../components/Masonary";
 
 // const mockServices = [
 //   {
@@ -196,6 +197,57 @@ const mockContactForm = {
   ],
 };
 
+const mockNews = [
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 1",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 2",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 3",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 4",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 5",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 6",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 7",
+    Link: "https://google.com",
+  },
+  {
+    ImgSrc:
+      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
+    Title: "News 8",
+    Link: "https://google.com",
+  },
+];
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -239,6 +291,26 @@ export default function Home() {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               }
             />
+          </ScrollAnimation>
+        </section>
+        <section className="clear-both mb-32 overflow-hidden">
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="slideInLeft"
+            duration={1}
+            className="w-full"
+          >
+            <Heading Text={"RECENT NEWS"} />
+          </ScrollAnimation>
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="fadeIn"
+            duration={3}
+            className="w-full"
+          >
+            <div className="lg:max-w-full clear-both lg:clear-none lg:mb-12">
+              <Masonary items={mockNews} />
+            </div>
           </ScrollAnimation>
         </section>
         {/* <section className="clear-both mb-24">

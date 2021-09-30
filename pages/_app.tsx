@@ -4,6 +4,8 @@ import Head from "next/head";
 import React from "react";
 import TransitionLayout from "../components/Transition";
 import Footer from "../components/Footer";
+import { useRouter } from "next/router";
+import Navigation from "../components/Navigation";
 
 function MyApp({
   Component,
@@ -27,6 +29,8 @@ function MyApp({
     },
   ];
 
+  const { pathname } = useRouter();
+
   return (
     <>
       <Head>
@@ -44,7 +48,10 @@ function MyApp({
         <TransitionLayout>
           <Component {...pageProps} />
         </TransitionLayout>
-        <Footer SocialMedias={mockSocialMedias} />
+        {pathname !== "/" && <Navigation />}
+        {pathname !== "/news/[name]" && (
+          <Footer SocialMedias={mockSocialMedias} />
+        )}
       </div>
     </>
   );

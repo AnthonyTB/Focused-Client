@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       maxWidth: {
         60: "60%",
+        63: "63rem",
         80: "80%",
       },
       colors: {

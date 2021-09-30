@@ -5,7 +5,6 @@ import About from "../../components/CreatorProfile/About";
 import Heading from "../../components/CreatorProfile/Heading";
 import Contact from "../../components/CreatorProfile/Contact";
 import ImageSlide from "../../components/ImageSlide";
-import Navigation from "../../components/Navigation";
 import Post from "../../components/CreatorProfile/Post";
 import InfoModal from "../../components/Modal";
 import ReactDOM from "react-dom";
@@ -112,7 +111,6 @@ const CreatorProfile: React.FC = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
         ></link>
       </Head>
-      <Navigation />
       <main className="w-3/4 m-auto">
         {modalNode}
         <div className="w-1/4 m-auto min-h-screen overflow-x-hidden">
@@ -173,7 +171,7 @@ const CreatorProfile: React.FC = () => {
             duration={3}
             className="w-full"
           >
-            <Heading Heading={"Get Into Contact"} />
+            <Heading Heading={"Get In Touch"} />
             <Contact
               CreatorName={name as string}
               CreatorEmail={"shroud@gmail.com"}
