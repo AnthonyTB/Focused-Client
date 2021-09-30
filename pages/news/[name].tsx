@@ -11,7 +11,7 @@ interface IProps {
 const News: React.FC<IProps> = ({ ImageSrc, Content }) => {
   const router = useRouter();
   let { name } = router.query;
-  name = name?.replace("-", " ");
+  // name = name?.replace("-", " ");
 
   return (
     <div>
