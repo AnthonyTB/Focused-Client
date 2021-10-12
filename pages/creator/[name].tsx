@@ -162,9 +162,12 @@ export async function getStaticProps() {
 
   let creator;
 
-  for (const i of creators) {
-    if (i)
-  }
+   for (const i of creators) {
+     if (i.Creator[0].name === name) {
+      creator = i
+      break
+    }
+   }
 
   if ( !creator ) {
     return {
