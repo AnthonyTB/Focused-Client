@@ -8,9 +8,10 @@ import ImageSlide from "../../components/ImageSlide";
 import Post from "../../components/CreatorProfile/Post";
 import ScrollAnimation from "react-animate-on-scroll";
 
+const router = useRouter();
+const { name } = router.query;
+
 const CreatorProfile: React.FC = () => {
-  const router = useRouter();
-  const { name } = router.query;
 
   const mockSponsorSlides = [
     {
@@ -155,11 +156,17 @@ const CreatorProfile: React.FC = () => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const res = await fetch(`https://focused-gg.herokuapp.com/creators`)
   const creators = await res.json()
 
-  if ( !creators ) {
+  let creator;
+
+  for (const i of creators) {
+    if (i)
+  }
+
+  if ( !creator ) {
     return {
       notFound: true,
     }

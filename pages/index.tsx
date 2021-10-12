@@ -207,7 +207,7 @@ export default function Home({ about, news, businesses, creators, footer }: any)
   );
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const res = await fetch(`https://focused-gg.herokuapp.com/businesses`)
   const res2 = await fetch(`https://focused-gg.herokuapp.com/about-us`)
   const res3 = await fetch(`https://focused-gg.herokuapp.com/news-articles`)
