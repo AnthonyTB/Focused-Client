@@ -3,16 +3,14 @@ import Link from "next/link";
 
 interface IImageProps {
   ImageSrc: string;
-  ImageLink?: string;
+  ImageLink: string;
   ImageHeading?: string;
-  ImageCallback?: () => void;
 }
 
 const Image: React.FC<IImageProps> = ({
   ImageSrc,
   ImageLink,
   ImageHeading,
-  ImageCallback,
 }): JSX.Element => {
   const renderHeading = () => {
     if (ImageHeading) {
@@ -25,7 +23,6 @@ const Image: React.FC<IImageProps> = ({
   };
 
   const ifLinkorCallback = () => {
-    if (ImageLink) {
       return (
         <Link href={ImageLink} key={ImageHeading}>
           <a className="inline-block mx-2 relative mb-4 custom__image-card">
@@ -34,19 +31,6 @@ const Image: React.FC<IImageProps> = ({
           </a>
         </Link>
       );
-    } else if (ImageCallback) {
-      return (
-        <button
-          onClick={ImageCallback}
-          className="inline-block mx-2 relative mb-4 custom__image-card"
-        >
-          <ImageComponent src={ImageSrc} width={200} height={300} />
-          {renderHeading()}
-        </button>
-      );
-    } else {
-      return <h3>error</h3>;
-    }
   };
 
   return ifLinkorCallback();

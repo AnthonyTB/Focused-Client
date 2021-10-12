@@ -6,69 +6,42 @@ import Heading from "../../components/CreatorProfile/Heading";
 import Contact from "../../components/CreatorProfile/Contact";
 import ImageSlide from "../../components/ImageSlide";
 import Post from "../../components/CreatorProfile/Post";
-import InfoModal from "../../components/Modal";
-import ReactDOM from "react-dom";
 import ScrollAnimation from "react-animate-on-scroll";
 
 const CreatorProfile: React.FC = () => {
   const router = useRouter();
   const { name } = router.query;
-  const modalNode = <div id="#modal"></div>;
 
   const mockSponsorSlides = [
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () =>
-        ReactDOM.createPortal(
-          <InfoModal Heading={"Hi"} Content={"Hi"} isOpen={true} />,
-          modalNode as any
-        ),
+        ImageLink: ""
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () =>
-        ReactDOM.createPortal(
-          <InfoModal Heading={"Hi 2"} Content={"Hi"} isOpen={true} />,
-          modalNode as any
-        ),
+        ImageLink: ""
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () =>
-        ReactDOM.createPortal(
-          <InfoModal Heading={"Hi 3"} Content={"Hi"} isOpen={true} />,
-          modalNode as any
-        ),
+        ImageLink: ""
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () =>
-        ReactDOM.createPortal(
-          <InfoModal Heading={"Hi 4"} Content={"Hi"} isOpen={true} />,
-          modalNode as any
-        ),
+        ImageLink: ""
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () =>
-        ReactDOM.createPortal(
-          <InfoModal Heading={"Hi 5"} Content={"Hi"} isOpen={true} />,
-          modalNode as any
-        ),
+        ImageLink: ""
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageCallback: () =>
-        ReactDOM.createPortal(
-          <InfoModal Heading={"Hi 6"} Content={"Hi"} isOpen={true} />,
-          (<div id="#modal" />) as any
-        ),
+      ImageLink: ""
     },
   ];
 
@@ -112,7 +85,6 @@ const CreatorProfile: React.FC = () => {
         ></link>
       </Head>
       <main className="w-3/4 m-auto">
-        {modalNode}
         <div className="w-1/4 m-auto min-h-screen overflow-x-hidden">
           <Hero
             Name={name as string}

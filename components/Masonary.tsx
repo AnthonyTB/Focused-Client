@@ -26,15 +26,15 @@ const Masonary: React.FC<IProps> = ({items}) => {
                 }
             )}
             </ul>
-                <button onClick={limit > 6 ? () => setLimit(6) : () => setLimit(999)} type="button" className="uppercase z-10 text-xs lg:absolute lg:-bottom-10 lg:left-1/2 text-white rounded border-2 border-accent py-1 px-2 font-black">{limit > 6 ? "hide" : "show more"}</button>
+                { items.length > 6 && <button onClick={limit > 6 ? () => setLimit(6) : () => setLimit(999)} type="button" className="uppercase z-10 text-xs lg:absolute lg:-bottom-10 lg:left-1/2 text-white rounded border-2 border-accent py-1 px-2 font-black">{limit > 6 ? "hide" : "show more"}</button> }
         </div>
     )
 }
 
 const Block: React.FC<IBlock> = ({ImgSrc, Title, Link}) => {
     return (
-        <li className="w-full sm:w-1/3 lg:w-1/4 relative m-2 ">
-            <a href={Link} target="blank_" className="Companies">
+        <li className="w-full sm:w-1/3 lg:w-1/4 relative m-2 Companies">
+            <a href={Link} target="blank_">
             <Image 
                 src={ImgSrc} 
                 width={500} 

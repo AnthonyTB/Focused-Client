@@ -112,69 +112,6 @@ const mockSlides = [
   },
 ];
 
-const mockCompanies = [
-  {
-    Brand: "https://i.imgur.com/Ya8eXAI.png",
-    URL: "https://gfuel.com/",
-    Name: "GFUEL",
-  },
-  {
-    Brand: "https://i.imgur.com/zO9y6Nd.png",
-    URL: "https://www.bgca.org/",
-    Name: "Boys&Girls",
-  },
-  {
-    Brand: "https://i.imgur.com/Ebhxjw5.png",
-    URL: "https://www.dell.com/en-us/gaming/alienware",
-    Name: "Dell",
-  },
-  {
-    Brand: "https://i.imgur.com/ee92bLN.png",
-    URL: "https://battlebeavercustoms.com/",
-    Name: "BattleBeaver",
-  },
-  {
-    Brand: "https://i.imgur.com/TtDoNwU.png",
-    URL: "https://dreamhack.com/",
-    Name: "Dreamhack",
-  },
-  {
-    Brand: "https://i.imgur.com/fsIuJdt.png",
-    URL: "https://www.elgato.com/en",
-    Name: "Elgato",
-  },
-  {
-    Brand: "https://i.imgur.com/EgPZCEc.png",
-    URL: "https://www.hyperxgaming.com/unitedstates/us",
-    Name: "HyperX",
-  },
-  {
-    Brand: "https://i.imgur.com/feQNo6G.png",
-    URL: "https://liquiddeath.com/",
-    Name: "LiquidDeath",
-  },
-  {
-    Brand: "https://i.imgur.com/DuN2BWf.png",
-    URL: "https://www.manscaped.com/",
-    Name: "Manscaped",
-  },
-  {
-    Brand: "https://i.imgur.com/pI6haV9.png",
-    URL: "https://www.twitch.tv/",
-    Name: "Twitch",
-  },
-  {
-    Brand: "https://i.imgur.com/qytatOO.png",
-    URL: "https://www.pitviper.com/",
-    Name: "PitViper",
-  },
-  {
-    Brand: "https://i.imgur.com/rrm7Qrx.png",
-    URL: "https://respawnproducts.com/",
-    Name: "RespawnProducts",
-  },
-];
-
 const mockContactForm = {
   Email: "sdfsdfsdf@gmail.com",
   Address: "Seattle, WA",
@@ -197,58 +134,41 @@ const mockContactForm = {
   ],
 };
 
-const mockNews = [
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 1",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 2",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 3",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 4",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 5",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 6",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 7",
-    Link: "https://google.com",
-  },
-  {
-    ImgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    Title: "News 8",
-    Link: "https://google.com",
-  },
-];
+export default function Home({ about, news, businesses, creators }: any) {
 
-export default function Home() {
+  const ourBusinesses = businesses.map((item: any) => {
+    return {
+      Brand: `${process.env.NEXT_PUBLIC_CMS}${item.business[0].Image[0].url}`,
+      URL: item.business[0].Link,
+    }
+  })
+
+  const ourNews = news.map((item: any) => {
+    return {
+      ImgSrc:
+      `${process.env.NEXT_PUBLIC_CMS}${item.Article[0].Image.url}`,
+      Title: item.Article[0].Title,
+      Link: item.Article[0].Link,
+    }
+  })
+
+  const ourCreators = creators.map((item: any) => {
+    return {
+      ImageSrc:
+      `${process.env.NEXT_PUBLIC_CMS}${item.Creator[0].Image.url}`,
+      ImageHeading: item.Creator[0].Name,
+      ImageLink: `/creator/${item.Creator[0].Name}`,
+    }
+  })
+
+  const ourContactFormSocials = news.map((item: any) => {
+    return {
+      Brand: "twitter",
+      Link: "https://twitter.com",
+      BrandingIcon: "fab fa-twitter",
+    }
+  })
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -287,9 +207,7 @@ export default function Home() {
             className="w-full"
           >
             <About
-              Text={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-              }
+              Text={ about.BodyText }
             />
           </ScrollAnimation>
         </section>
@@ -309,7 +227,7 @@ export default function Home() {
             className="w-full"
           >
             <div className="lg:max-w-full clear-both lg:clear-none lg:mb-12">
-              <Masonary items={mockNews} />
+              <Masonary items={ourNews} />
             </div>
           </ScrollAnimation>
         </section>
@@ -344,7 +262,7 @@ export default function Home() {
               className="w-full"
             >
               <div className="lg:max-w-80 clear-both lg:float-right lg:mb-36">
-                <ImageSlide Slides={mockSlides} />
+                <ImageSlide Slides={ourCreators} />
               </div>
             </ScrollAnimation>
           </div>
@@ -359,7 +277,7 @@ export default function Home() {
             <Heading Text={"OUR WORK"} />
           </ScrollAnimation>
           <ScrollAnimation animateOnce={true} animateIn="fadeIn" duration={3}>
-            <Work Companies={mockCompanies} />
+            <Work Companies={ourBusinesses} />
           </ScrollAnimation>
         </section>
         <section className="clear-both mb-32 overflow-x-hidden">
@@ -383,4 +301,25 @@ export default function Home() {
       </main>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch(`https://focused-gg.herokuapp.com/businesses`)
+  const res2 = await fetch(`https://focused-gg.herokuapp.com/about-us`)
+  const res3 = await fetch(`https://focused-gg.herokuapp.com/news-articles`)
+  const res4 = await fetch(`https://focused-gg.herokuapp.com/creators`)
+  const businesses = await res.json()
+  const about = await res2.json()
+  const news = await res3.json()
+  const creators = await res4.json()
+
+  if (!businesses) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { businesses, about, news, creators }, // will be passed to the page component as props
+  }
 }
