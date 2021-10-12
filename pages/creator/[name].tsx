@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Hero from "../../components/CreatorProfile/Hero";
 import About from "../../components/CreatorProfile/About";
@@ -8,10 +7,13 @@ import ImageSlide from "../../components/ImageSlide";
 import Post from "../../components/CreatorProfile/Post";
 import ScrollAnimation from "react-animate-on-scroll";
 
-const router = useRouter();
-const { name } = router.query;
-
-const CreatorProfile: React.FC = () => {
+const CreatorProfile: React.FC = ({ creator }: any) => {
+  const ourPartnerships = creator.Creator[0].Partnership.map((item: any) => {
+    return {
+      ImageSrc: item.Image.url,
+      ImageLink: item.Link
+    }
+  })
 
   const mockSponsorSlides = [
     {
@@ -75,7 +77,7 @@ const CreatorProfile: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Focused | {name}</title>
+        <title>Focused | {creator.Creator[0].Name}</title>
         <script
           src="https://kit.fontawesome.com/1a7135390e.js"
           crossOrigin="anonymous"
@@ -88,10 +90,8 @@ const CreatorProfile: React.FC = () => {
       <main className="w-3/4 m-auto">
         <div className="w-1/4 m-auto min-h-screen overflow-x-hidden">
           <Hero
-            Name={name as string}
-            ImageUrl={
-              "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg"
-            }
+            Name={creator.Creator[0].Name}
+            ImageUrl={`${process.env.NEXT_PUBLIC_CMS}${creator.Creator[0].Image.url}`}
             SocialMedias={mockSocialMedia}
           />
         </div>
@@ -102,11 +102,7 @@ const CreatorProfile: React.FC = () => {
             duration={3}
             className="w-full"
           >
-            <About
-              Content={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-              }
-            />
+            <About Content={creator.Creator[0].About} />
           </ScrollAnimation>
         </section>
         <section className="md:w-3/4 mb-48 m-auto relative">
@@ -118,7 +114,7 @@ const CreatorProfile: React.FC = () => {
           >
             <Heading Heading={"Partnerships"} />
             <div className="min-w-full">
-              <ImageSlide Slides={mockSponsorSlides} />
+              <ImageSlide Slides={ourPartnerships} />
             </div>
           </ScrollAnimation>
         </section>
@@ -146,8 +142,8 @@ const CreatorProfile: React.FC = () => {
           >
             <Heading Heading={"Get In Touch"} />
             <Contact
-              CreatorName={name as string}
-              CreatorEmail={"shroud@gmail.com"}
+              CreatorName={creator.Creator[0].Name}
+              CreatorEmail={creator.Creator[0].Email}
             />
           </ScrollAnimation>
         </section>
@@ -156,14 +152,25 @@ const CreatorProfile: React.FC = () => {
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
+  const res = await fetch('https://focused-gg.herokuapp.com/creators')
+  const users = await res.json()
+
+  const paths = users.map((user: any) => ({
+    params: { name: user.Creator[0].Name },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }: any) {
   const res = await fetch(`https://focused-gg.herokuapp.com/creators`)
   const creators = await res.json()
 
   let creator;
 
    for (const i of creators) {
-     if (i.Creator[0].name === name) {
+     if (i.Creator[0].Name === params.name) {
       creator = i
       break
     }
@@ -176,7 +183,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { creators },
+    props: { creator },
   }
 }
 
