@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Success from "../Success";
 
 interface IProps {
-  Email: string;
-  Address: string;
-  SocialMedias: ISocialMedia[];
+  Email?: string;
+  Address?: string;
+  SocialMedias?: ISocialMedia[];
 }
 
 interface ISocialMedia {

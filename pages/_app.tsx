@@ -14,21 +14,6 @@ function MyApp({
   Component: React.FC;
   pageProps: any;
 }) {
-  const mockSocialMedias = [
-    {
-      ProviderBranding: "fab fa-twitter",
-      Link: "https://twitter.com/shroud",
-    },
-    {
-      ProviderBranding: "fab fa-instagram",
-      Link: "https://instagram.com/shroud",
-    },
-    {
-      ProviderBranding: "fas fa-envelope",
-      Link: "mailto:anthonytb97@gmail.com",
-    },
-  ];
-
   const { pathname } = useRouter();
 
   return (
@@ -49,9 +34,6 @@ function MyApp({
           <Component {...pageProps} />
         </TransitionLayout>
         {pathname !== "/" && <Navigation />}
-        {pathname !== "/news/[name]" && (
-          <Footer SocialMedias={mockSocialMedias} />
-        )}
       </div>
     </>
   );

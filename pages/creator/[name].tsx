@@ -155,4 +155,19 @@ const CreatorProfile: React.FC = () => {
   );
 };
 
+export async function getStaticProps(context) {
+  const res = await fetch(`https://focused-gg.herokuapp.com/creators`)
+  const creators = await res.json()
+
+  if ( !creators ) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { creators },
+  }
+}
+
 export default CreatorProfile;

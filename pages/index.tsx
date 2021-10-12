@@ -9,6 +9,7 @@ import ContactForm from "../components/Home/Contact";
 import ScrollAnimation from "react-animate-on-scroll";
 import Work from "../components/Home/Work";
 import Masonary from "../components/Masonary";
+import Footer from "../components/Footer";
 
 // const mockServices = [
 //   {
@@ -37,104 +38,7 @@ import Masonary from "../components/Masonary";
 //   },
 // ];
 
-const mockSlides = [
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud",
-    ImageLink: "/creator/Shroud",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud1",
-    ImageLink: "/creator/Shroud1",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud2",
-    ImageLink: "/creator/Shroud2",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud3",
-    ImageLink: "/creator/Shroud3",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud4",
-    ImageLink: "/creator/Shroud4",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud5",
-    ImageLink: "/creator/Shroud5",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud6",
-    ImageLink: "/creator/Shroud6",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud7",
-    ImageLink: "/creator/Shroud7",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud8",
-    ImageLink: "/creator/Shroud8",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud9",
-    ImageLink: "/creator/Shroud9",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud10",
-    ImageLink: "/creator/Shroud10",
-  },
-  {
-    ImageSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/Shroud_at_PUBG_PGI_2018_%28cropped%29.jpg",
-    ImageHeading: "Shroud7",
-    ImageLink: "/creator/Shroud7",
-  },
-];
-
-const mockContactForm = {
-  Email: "sdfsdfsdf@gmail.com",
-  Address: "Seattle, WA",
-  SocialMedias: [
-    {
-      Brand: "twitter",
-      Link: "https://twitter.com",
-      BrandingIcon: "fab fa-twitter",
-    },
-    {
-      Brand: "instagram",
-      Link: "https://instagram.com",
-      BrandingIcon: "fab fa-instagram",
-    },
-    {
-      Brand: "linkedin",
-      Link: "https://linkedin.com",
-      BrandingIcon: "fab fa-linkedin-in",
-    },
-  ],
-};
-
-export default function Home({ about, news, businesses, creators }: any) {
+export default function Home({ about, news, businesses, creators, footer }: any) {
 
   const ourBusinesses = businesses.map((item: any) => {
     return {
@@ -161,11 +65,10 @@ export default function Home({ about, news, businesses, creators }: any) {
     }
   })
 
-  const ourContactFormSocials = news.map((item: any) => {
+  const footerSocials = footer.map((item: any) => {
     return {
-      Brand: "twitter",
-      Link: "https://twitter.com",
-      BrandingIcon: "fab fa-twitter",
+      ProviderBranding: item.FooterSocials[0].FontAwesomeIcon,
+      Link: item.FooterSocials[0].Link,
     }
   })
 
@@ -295,10 +198,11 @@ export default function Home({ about, news, businesses, creators }: any) {
             duration={3}
             className="w-full"
           >
-            <ContactForm {...mockContactForm} />
+            <ContactForm />
           </ScrollAnimation>
         </section>
       </main>
+      <Footer SocialMedias={footerSocials} />
     </div>
   );
 }
@@ -308,18 +212,20 @@ export async function getStaticProps(context) {
   const res2 = await fetch(`https://focused-gg.herokuapp.com/about-us`)
   const res3 = await fetch(`https://focused-gg.herokuapp.com/news-articles`)
   const res4 = await fetch(`https://focused-gg.herokuapp.com/creators`)
+  const res5 = await fetch(`https://focused-gg.herokuapp.com/footer-socials`)
   const businesses = await res.json()
   const about = await res2.json()
   const news = await res3.json()
   const creators = await res4.json()
+  const footer = await res5.json()
 
-  if (!businesses) {
+  if (!businesses || !about || !news || !creators || !footer ) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { businesses, about, news, creators }, // will be passed to the page component as props
+    props: { businesses, about, news, creators, footer }, // will be passed to the page component as props
   }
 }
