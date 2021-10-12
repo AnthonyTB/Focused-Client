@@ -10,7 +10,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 const CreatorProfile: React.FC = ({ creator }: any) => {
   const ourPartnerships = creator.Creator[0].Partnership.map((item: any) => {
     return {
-      ImageSrc: item.Image.url,
+      ImageSrc: item.Image,
       ImageLink: item.Link
     }
   })
@@ -48,7 +48,7 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
     },
   ];
 
-  const mockPosts = [{ type: "twitter", user: "anthony_bostic" }];
+  const mockPosts = [{ type: "twitter", user: creator.Creator[0].Twitter }];
 
   const mockSocialMedia = [
     {
@@ -91,7 +91,7 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
         <div className="w-1/4 m-auto min-h-screen overflow-x-hidden">
           <Hero
             Name={creator.Creator[0].Name}
-            ImageUrl={`${process.env.NEXT_PUBLIC_CMS}${creator.Creator[0].Image.url}`}
+            ImageUrl={creator.Creator[0].Image}
             SocialMedias={mockSocialMedia}
           />
         </div>
@@ -118,6 +118,7 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
             </div>
           </ScrollAnimation>
         </section>
+        { creator.Creator[0].Twitter &&
         <section className="md:w-3/4 mb-48 m-auto relative">
           <ScrollAnimation
             animateOnce={true}
@@ -133,6 +134,7 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
             </div>
           </ScrollAnimation>
         </section>
+        }
         <section className="md:w-3/4 m-auto relative">
           <ScrollAnimation
             animateOnce={true}

@@ -42,15 +42,14 @@ export default function Home({ about, news, businesses, creators, footer }: any)
 
   const ourBusinesses = businesses.map((item: any) => {
     return {
-      Brand: `${process.env.NEXT_PUBLIC_CMS}${item.business[0].Image[0].url}`,
+      Brand: item.business[0].Image,
       URL: item.business[0].Link,
     }
   })
 
   const ourNews = news.map((item: any) => {
     return {
-      ImgSrc:
-      `${process.env.NEXT_PUBLIC_CMS}${item.Article[0].Image.url}`,
+      ImgSrc: item.Article[0].Image,
       Title: item.Article[0].Title,
       Link: item.Article[0].Link,
     }
@@ -58,8 +57,7 @@ export default function Home({ about, news, businesses, creators, footer }: any)
 
   const ourCreators = creators.map((item: any) => {
     return {
-      ImageSrc:
-      `${process.env.NEXT_PUBLIC_CMS}${item.Creator[0].Image.url}`,
+      ImageSrc: item.Creator[0].Image,
       ImageHeading: item.Creator[0].Name,
       ImageLink: `/creator/${item.Creator[0].Name}`,
     }
