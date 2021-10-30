@@ -154,17 +154,6 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
   );
 };
 
-export async function getStaticPaths() {
-  const res = await fetch("https://focused-gg.herokuapp.com/creators");
-  const users = await res.json();
-
-  const paths = users.map((user: any) => ({
-    params: { name: user.Creator[0].Name },
-  }));
-
-  return { paths, fallback: false };
-}
-
 export async function getServerSideProps({ params }: any) {
   const res = await fetch(`https://focused-gg.herokuapp.com/creators`);
   const creators = await res.json();
