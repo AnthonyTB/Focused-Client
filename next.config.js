@@ -8,6 +8,11 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ["upload.wikimedia.org", "resource.logitechg.com", "i.imgur.com", "focused-gg.herokuapp.com"],
+    domains: [
+      "upload.wikimedia.org",
+      "resource.logitechg.com",
+      "i.imgur.com",
+      "focused-gg.herokuapp.com",
+    ],
   },
 };

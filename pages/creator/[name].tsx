@@ -11,40 +11,40 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
   const ourPartnerships = creator.Creator[0].Partnership.map((item: any) => {
     return {
       ImageSrc: item.Image,
-      ImageLink: item.Link
-    }
-  })
+      ImageLink: item.Link,
+    };
+  });
 
   const mockSponsorSlides = [
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-        ImageLink: ""
+      ImageLink: "",
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-        ImageLink: ""
+      ImageLink: "",
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-        ImageLink: ""
+      ImageLink: "",
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-        ImageLink: ""
+      ImageLink: "",
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-        ImageLink: ""
+      ImageLink: "",
     },
     {
       ImageSrc:
         "https://resource.logitechg.com/w_719,c_limit,q_auto:best,f_auto,b_rgb:f4f4f4,dpr_auto/content/dam/gaming/en/products/shroud/shroud-lp-quote-2.png?v=1",
-      ImageLink: ""
+      ImageLink: "",
     },
   ];
 
@@ -118,23 +118,23 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
             </div>
           </ScrollAnimation>
         </section>
-        { creator.Creator[0].Twitter &&
-        <section className="md:w-3/4 mb-48 m-auto relative">
-          <ScrollAnimation
-            animateOnce={true}
-            animateIn="fadeIn"
-            duration={3}
-            className="w-full"
-          >
-            <Heading Heading={"Recent Posts"} />
-            <div className="flex flex-col md:flex-row">
-              {mockPosts.map(({ type, user }: any) => (
-                <Post postType={type} postUser={user} />
-              ))}
-            </div>
-          </ScrollAnimation>
-        </section>
-        }
+        {creator.Creator[0].Twitter && (
+          <section className="md:w-3/4 mb-48 m-auto relative">
+            <ScrollAnimation
+              animateOnce={true}
+              animateIn="fadeIn"
+              duration={3}
+              className="w-full"
+            >
+              <Heading Heading={"Recent Posts"} />
+              <div className="flex flex-col md:flex-row">
+                {mockPosts.map(({ type, user }: any) => (
+                  <Post postType={type} postUser={user} />
+                ))}
+              </div>
+            </ScrollAnimation>
+          </section>
+        )}
         <section className="md:w-3/4 m-auto relative">
           <ScrollAnimation
             animateOnce={true}
@@ -155,38 +155,38 @@ const CreatorProfile: React.FC = ({ creator }: any) => {
 };
 
 export async function getStaticPaths() {
-  const res = await fetch('https://focused-gg.herokuapp.com/creators')
-  const users = await res.json()
+  const res = await fetch("https://focused-gg.herokuapp.com/creators");
+  const users = await res.json();
 
   const paths = users.map((user: any) => ({
     params: { name: user.Creator[0].Name },
-  }))
+  }));
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }: any) {
-  const res = await fetch(`https://focused-gg.herokuapp.com/creators`)
-  const creators = await res.json()
+export async function getServerSideProps({ params }: any) {
+  const res = await fetch(`https://focused-gg.herokuapp.com/creators`);
+  const creators = await res.json();
 
   let creator;
 
-   for (const i of creators) {
-     if (i.Creator[0].Name === params.name) {
-      creator = i
-      break
+  for (const i of creators) {
+    if (i.Creator[0].Name === params.name) {
+      creator = i;
+      break;
     }
-   }
+  }
 
-  if ( !creator ) {
+  if (!creator) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return {
     props: { creator },
-  }
+  };
 }
 
 export default CreatorProfile;

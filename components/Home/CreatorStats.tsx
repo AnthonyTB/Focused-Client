@@ -41,22 +41,22 @@ interface ICSProps {}
 
 const CreatorStats: React.FC<ICSProps> = () => {
   return (
-    <ul className="mb-4">
-      <li className="inline-block mx-2">
+    <ul className="mb-4 lg:ml-4">
+      <li className="m-2 inline-block lg:block">
         <i className="fab fa-instagram text-accent inline-block text-xl mr-2" />
         <p className="font-black text-2xl inline-block text-white">
           <IncrementStats Value={100000} />
         </p>
         <p className="font-black text-accent text-xs text-center">FOLLOWERS</p>
       </li>
-      <li className="inline-block mx-2">
+      <li className="m-2 inline-block lg:block">
         <i className="fab fa-twitter text-accent inline-block text-xl mr-2" />
         <p className="font-black text-2xl inline-block text-white">
           <IncrementStats Value={100000} />
         </p>
         <p className="font-black text-accent text-xs text-center">FOLLOWERS</p>
       </li>
-      <li className="inline-block mx-2">
+      <li className="m-2 inline-block lg:block">
         <i className="fab fa-twitch text-accent inline-block text-xl mr-2" />
         <p className="font-black text-2xl inline-block text-white">
           <IncrementStats Value={100000} />
