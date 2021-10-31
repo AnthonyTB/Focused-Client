@@ -149,13 +149,13 @@ export default function Home({
           </section>
         ) : null}
         {ourCategories.length ? (
-          <section className="clear-both mb-24">
+          <section className="clear-both mb-32">
             <Heading Text={"OUR SERVICES"} />
             <Services Services={ourCategories} />
           </section>
         ) : null}
         {ourCreators.length ? (
-          <section className="clear-both mb-32 overflow-x-hidden">
+          <section className="clear-both mb-10 overflow-x-hidden">
             <ScrollAnimation
               animateOnce={true}
               animateIn="slideInLeft"
